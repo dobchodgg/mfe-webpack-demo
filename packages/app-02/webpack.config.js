@@ -43,7 +43,8 @@ module.exports = {
       },
       exposes: {
         Dialog: "./src/Dialog",
-        Tabs: "./src/Tabs"
+        Tabs: "./src/Tabs",
+        Test: "./src/Test"
       },
       shared: ["react", "react-dom", "@material-ui/core", "react-router-dom"]
     }),

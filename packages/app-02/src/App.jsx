@@ -4,6 +4,7 @@ import Dialog from "./Dialog";
 import { HashRouter } from "react-router-dom";
 import React from "react";
 import Tabs from "./Tabs";
+import Test from './Test';
 import { theme } from "./theme";
 
 const Page = React.lazy(() => import("app_01/Page"));
@@ -19,6 +20,8 @@ function App() {
             <Divider style={{ margin: "16px 0" }} />
             <Typography variant="h6">Tabs Component</Typography>
             <Tabs />
+            <Typography variant="h6">Test Component</Typography>
+            <Test />
           </Page>
         </React.Suspense>
       </ThemeProvider>

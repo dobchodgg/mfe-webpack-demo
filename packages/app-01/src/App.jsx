@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme =>
 
 function App() {
   const classes = useStyles();
+  window.localStorage.setItem('Role', 'GlobalAdmin');
 
   return (
     <HashRouter>
