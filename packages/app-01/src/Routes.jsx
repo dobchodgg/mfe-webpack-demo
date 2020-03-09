@@ -20,14 +20,12 @@ const createComponents = (components) => {
     if (component.Role === role) {
       const path = `${component.Package}/${component.Name}`;
       console.log('path: ', path);
-      const comp = React.createElement(
-        Suspense,
-        { key: index, fallback: `Loading component ${component.Name} from ${component.Package}` },
-        [React.createElement(
-          lazy(() => import(path)),
-          { ...component.Props, key: index },
-          null
-      )]);
+      const Imp = lazy(() => import(path));
+      const comp = () => (
+        <Suspense
+        fallback={`Loading component ${component.Name} from ${component.Package}`}>
+          <Imp {...component.Props} />
+        </Suspense>)
       res.push(comp);
     }
   });
