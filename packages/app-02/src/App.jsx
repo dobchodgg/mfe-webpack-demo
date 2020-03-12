@@ -4,7 +4,7 @@ import Dialog from "./Dialog";
 import { HashRouter } from "react-router-dom";
 import React from "react";
 import Tabs from "./Tabs";
-import Test from './Test';
+import Test from './TestApp2';
 import { theme } from "./theme";
 
 const Page = React.lazy(() => import("app_01/Page"));

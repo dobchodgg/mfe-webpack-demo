@@ -42,7 +42,7 @@ module.exports = {
       },
       exposes: {
         Button: "./src/Button",
-        Test: "./src/Test"
+        TestApp3: "./src/TestApp3"
       },
       shared: ["react", "react-dom"]
     }),

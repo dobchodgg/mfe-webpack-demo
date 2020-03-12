@@ -1,12 +1,16 @@
 import { Route, Switch } from "react-router-dom";
-
 import DialogPage from "./pages/dialog-page";
 import IndexPage from "./pages/index-page";
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, createElement, Fragment } from "react";
 import RoutingPage from "./pages/routing-page";
 import UiLibraryPage from "./pages/ui-library-page";
 import Test from './pages/test'
-import config from './config.json';
+import config from '../config.json';
+import Page from "./Page";
+import { Grid, CssBaseline, InputLabel, MenuItem, Select } from '@material-ui/core'
+import loadable from '@loadable/component';
+
+const randomNumber = () => Math.floor(Math.random() * 100) + 1;
 
 /**
  * Create component
@@ -14,23 +18,20 @@ import config from './config.json';
  */
 const createComponents = (components) => {
   const role = window.localStorage.getItem('Role');
-  const res = [];
+  const result = [];
 
-  components.forEach((component, index) => {
+  components.forEach(component => {
     if (component.Role === role) {
-      const path = `${component.Package}/${component.Name}`;
-      console.log('path: ', path);
-      const Imp = lazy(() => import(path));
-      const comp = () => (
-        <Suspense
-        fallback={`Loading component ${component.Name} from ${component.Package}`}>
-          <Imp {...component.Props} />
-        </Suspense>)
-      res.push(comp);
+      const { Name, Package, Props, Url } = component;
+      console.log('Url: ', Url);
+      const fallback = `Loading component ${Name} from ${Package}`;
+      // const res = lazy(() => import(`${Package}/${Name}`));
+      const res = lazy(() => import('app_02/TestApp2'));
+      result.push(res);
     }
   });
 
-  return res;
+  return result;
 }
 
 /**
@@ -39,34 +40,41 @@ const createComponents = (components) => {
  */
 const createRoutes = (routeConfig) => {
   const res = []
-  routeConfig.forEach((config, index) => {
+  for (const config of routeConfig) {
     const components = createComponents(config.Components);
     if (components.length) {
+      console.log('components: ', components);
       res.push({
         route: config.Route,
-        component: () => components
-      });
-    }
-  });
+        components: components
+      })
+    };
 
-  return res;
+    return res;
+  }
 }
 
-export default function Routes() {
-  const routes = createRoutes(config);
-  console.log('routes: ', routes);
-  return (
-    <Switch>
-      <Route path="/" exact={true}>
-        <IndexPage />
-      </Route>
-      {/* <Route path="/dialog" component={DialogPage} />
-    <Route path="/ui-library" component={UiLibraryPage} />
-    <Route path="/routing" component={RoutingPage} />
-    <Route path="/test" component={Test} /> */}
-      {routes.map((item, index) => {
-        return (<Route path={item.route} key={index} component={item.component} />);
-      })}
-    </Switch>
-  );
-}
+  export default function Routes() {
+    const routes = createRoutes(config);
+    return (
+      <Suspense fallback={<div>Loading</div>}>
+        <Switch>
+          <Route path="/" exact={true}>
+            <IndexPage />
+          </Route>
+          <Route path="/dialog" component={DialogPage} />
+          <Route path="/ui-library" component={UiLibraryPage} />
+          <Route path="/routing" component={RoutingPage} />
+          <Route path="/test" component={Test} />
+          {/* {routes.map((item, index) => {
+            const { components, route } = item;
+            return (
+              <Route path={route} key={index}>
+                {components.map((Comment, index) => <Fragment key={index}><Comment /></Fragment>)}
+              </Route>
+            );
+          })} */}
+        </Switch>
+      </Suspense>
+    );
+  }

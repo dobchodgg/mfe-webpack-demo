@@ -5,13 +5,16 @@ import UiLibraryMd from "../docs/UiLibrary.md";
 
 const Button = React.lazy(() => import("app_03/Button"));
 
-const UiLibraryPage = () => (
-  <Page title="UI Library Demo">
-    <Markdown>{UiLibraryMd}</Markdown>
-    <React.Suspense fallback="Loading Styled Button...">
-      <Button>&#128133; Button</Button>
-    </React.Suspense>
-  </Page>
-);
+const UiLibraryPage = () => {
+  console.log('Button: ', Button);
+  return (
+    <Page title="UI Library Demo">
+      <Markdown>{UiLibraryMd}</Markdown>
+      <React.Suspense fallback="Loading Styled Button...">
+        <Button>&#128133; Button</Button>
+      </React.Suspense>
+    </Page>
+  );
+}
 
 export default UiLibraryPage;

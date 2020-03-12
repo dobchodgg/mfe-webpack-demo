@@ -35,7 +35,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "app_02",
-      library: { type: "var", name: "app_02" },
+      library: { type: "window", name: "app_02" },
       filename: "remoteEntry.js",
       remotes: {
         app_01: "app_01",
@@ -44,7 +44,7 @@ module.exports = {
       exposes: {
         Dialog: "./src/Dialog",
         Tabs: "./src/Tabs",
-        Test: "./src/Test"
+        TestApp2: "./src/TestApp2"
       },
       shared: ["react", "react-dom", "@material-ui/core", "react-router-dom"]
     }),

@@ -2,8 +2,8 @@ import React, { Suspense, lazy } from "react";
 import { Grid, CssBaseline, InputLabel, MenuItem, Select } from '@material-ui/core'
 import Page from "../Page";
 
-const Test1 = lazy(() => import("app_02/Test"));
-const Test2 = lazy(() => import("app_03/Test"));
+const Test1 = lazy(() => import("app_02/TestApp2"));
+const Test2 = lazy(() => import("app_03/TestApp3"));
 
 const testFunction = (env) => {
     console.log('Logging from App 1: ', env.target);

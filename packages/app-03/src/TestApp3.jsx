@@ -9,8 +9,8 @@ const handleChange = (env) => {
     }
 }
 
-const Test = () => (
-    <>
+const TestApp3 = () => (
+    <div>
         <CssBaseline />
         <InputLabel id="demo-simple-select-label">Age App 3:</InputLabel>
         <Select
@@ -25,7 +25,7 @@ const Test = () => (
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
         </Select>
-    </>
+    </div>
 );
 
-export default Test;
+export default TestApp3;

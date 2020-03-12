@@ -1,0 +1,25 @@
+[
+    {
+        "Route": "/test",
+        "Components": [
+            {
+                "Package": "app_02",
+                "Name": "TestApp2",
+                "Url": "app_02/TestApp2",
+                "Props": {
+                    "CountryId": "ca9994b-cfda-4699-9381-61c1f801ac97",
+                    "RegionId": null,
+                    "CropId": "c445a50a-3a7d-408b-b124-f7b6a969098f"
+                },
+                "Role": "GlobalAdmin"
+            },
+            {
+                "Package": "app_03",
+                "Name": "TestApp3",
+                "Url": "app_03/TestApp3",
+                "Props": null,
+                "Role": "GlobalAdmin"
+            }
+        ]
+    }
+]

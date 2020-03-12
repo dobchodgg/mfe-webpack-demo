@@ -47,10 +47,7 @@ module.exports = {
       },
       exposes: {
         SideNav: "./src/SideNav",
-        Page: "./src/Page",
-        DialogPage: "./src/pages/dialog-page",
-        UiLibraryPage: "./src/pages/ui-library-page",
-        Test: "./src/pages/Test"
+        Page: "./src/Page"
       },
       shared: ["react", "react-dom", "@material-ui/core", "react-router-dom"]
     }),
